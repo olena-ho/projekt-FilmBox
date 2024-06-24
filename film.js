@@ -1,3 +1,4 @@
+// for the film.html page (that's details about each film)
 const filmy = [
 	{
 		id: 'pelisky',

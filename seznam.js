@@ -1,3 +1,4 @@
+// js for the seznam.html (the page with the list of films)
 const filmy = [
 	{
 		id: 'pelisky',
