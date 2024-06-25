@@ -3,6 +3,7 @@
 // hamburger menu
 const hamburgerButton = document.querySelector('#menu-tlacitko');
 const hamburgerList = document.querySelector('#menu-polozky');
+const hamburgerIcon = document.querySelector('.fas'); 
 
 const showHamburger = () => {
   hamburgerList.classList.toggle('show');
@@ -17,4 +18,3 @@ const showHamburger = () => {
 
 hamburgerButton.addEventListener('click', showHamburger);
 
-const hamburgerIcon = document.querySelector('.fas');
