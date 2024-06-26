@@ -79,6 +79,26 @@ img {
 }
 
 /* end of film list */
+.film-details__body {
+  text-align: left;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.film-details__title {
+  margin-bottom: 1rem;
+}
+
+.form-outline {
+  border: 1px solid #ced4da;
+  margin-top: 0.4rem;
+}
+
+.form-label {
+  background-color: white;
+  padding: 2px;
+}
 video {
   width: 100%;
   height: auto;
