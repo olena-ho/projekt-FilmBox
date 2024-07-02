@@ -1,17 +1,17 @@
-import { filmy } from './filmyData.js';
+import { filmy } from "./filmyData.js";
 
 const selectedFilmId = location.hash.slice(1);
 
 const selectedFilm = filmy.find((film) => film.id === selectedFilmId);
 
-const premiereDate = dayjs(selectedFilm.premiera).format('D.M.YYYY');
+const premiereDate = dayjs(selectedFilm.premiera).format("D.M.YYYY");
 
-const daysDiffFromPremiere = dayjs(selectedFilm.premiera).diff(dayjs(), 'days');
+const daysDiffFromPremiere = dayjs(selectedFilm.premiera).diff(dayjs(), "days");
 
-const premiereDateText = daysDiffFromPremiere > 0
-  ? `je za ${daysDiffFromPremiere} dní`
-  : `bylo před ${Math.abs(daysDiffFromPremiere)} dny`;
-
+const premiereDateText =
+  daysDiffFromPremiere > 0
+    ? `je za ${daysDiffFromPremiere} dní`
+    : `bylo před ${Math.abs(daysDiffFromPremiere)} dny`;
 
 const filmDetailCard = document.querySelector("#detail-filmu");
 
@@ -110,3 +110,38 @@ filmDetailCard.innerHTML = `
       </div>
     </div>
   </div>`;
+
+const stars = document.querySelectorAll(".button-star");
+let currentRating = 0;
+
+const updateStars = (rating) => {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.remove("far");
+      star.classList.add("fas");
+    } else {
+      star.classList.remove("fas");
+      star.classList.add("far");
+    }
+  })
+};
+
+const hoverStars = (e) => {
+  const hoveredRating = Number(e.target.textContent);
+  updateStars(hoveredRating);
+};
+
+const setClickedRating = (e) => {
+  currentRating = Number(e.target.textContent);
+  updateStars(currentRating);
+};
+
+const resetToCurrentRating = () => {
+  updateStars(currentRating);
+};
+
+stars.forEach((star) => {
+  star.addEventListener("mouseenter", hoverStars);
+  star.addEventListener("click", setClickedRating);
+  star.addEventListener("mouseleave", resetToCurrentRating);
+})
