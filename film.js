@@ -145,3 +145,30 @@ stars.forEach((star) => {
   star.addEventListener("click", setClickedRating);
   star.addEventListener("mouseleave", resetToCurrentRating);
 })
+
+const noteForm = document.querySelector("#note-form");
+
+
+const submitFeedback = (e) => {
+  e.preventDefault();
+  const inputElement = document.querySelector("#message-input");
+  const message = inputElement.value;
+  const termsCheckbox = document.querySelector("#terms-checkbox");
+
+  if (message === "") {
+    inputElement.classList.add("is-invalid");
+    return;
+  }
+  
+  if (!termsCheckbox.checked) {
+    termsCheckbox.classList.add("is-invalid");
+    return;
+  }
+
+  noteForm.innerHTML = `
+  <p class="card-text">
+    ${message}
+  </p>`;
+};
+
+noteForm.addEventListener("submit", submitFeedback);
